@@ -19,7 +19,6 @@ SAVEHIST=10000
 
 setopt hist_find_no_dups
 setopt hist_ignore_all_dups
-setopt correct_all
 setopt auto_list
 setopt auto_menu
 
@@ -30,14 +29,7 @@ bindkey '^[[B' history-substring-search-down
 bindkey -e
 
 export VISUAL=vim
-export EDITOR="$VISUAL"
-
-# jenv to manage java versions
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
-# rbenv to manage ruby versions
-eval "$(rbenv init -)"
+export EDITOR=vim
 
 # git aliases
 alias g='git'
