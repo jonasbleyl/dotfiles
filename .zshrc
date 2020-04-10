@@ -23,8 +23,6 @@ setopt correct_all
 setopt auto_list
 setopt auto_menu
 
-unsetopt correct_all
-
 zstyle ':completion:*' menu select
 
 bindkey '^[[A' history-substring-search-up
