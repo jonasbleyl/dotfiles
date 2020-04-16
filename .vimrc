@@ -31,6 +31,7 @@ set backupdir=/var/tmp,~/.tmp,.
 set directory=/var/tmp,~/.tmp,.
 set hidden
 set nostartofline
+set splitright
 
 " filetype specific
 au FileType go set tabstop=4 | set shiftwidth=4
