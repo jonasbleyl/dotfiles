@@ -19,6 +19,7 @@ Plugin 'fatih/vim-go'
 Plugin 'mileszs/ack.vim'
 Plugin 'JGShaw/AnsibleVaultVim'
 Plugin 'jonasbleyl/lunarflare.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 
 set re=1
@@ -88,12 +89,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
-" move between splits
-nnoremap <C-j> <C-W><C-J>
-nnoremap <C-k> <C-W><C-K>
-nnoremap <C-l> <C-W><C-L>
-nnoremap <C-h> <C-W><C-H>
-
 " ansible-vault
 let g:AnsibleVaultVimPasswordFile = '.vault'
 nmap <silent> <leader>ave :AnsibleVaultEdit<CR>
@@ -104,13 +99,10 @@ noremap <silent> <leader>i  mzgg=G`z
 " <leader>y yank to system clipboard
 vnoremap <leader>y  "*y
 
-" <Leader>t to run all tests in the current file if it is a test, otherwise run the last test file
+" vim-test
 noremap <silent> <leader>t :TestFile<CR>
-
-" <Leader>t to run the tests in the scope nearest the cursor
 noremap <silent> <leader>T :TestNearest<CR>
-
-" <Leader>ts to run the tests in the scope nearest the cursor
+noremap <silent> <Leader>l :TestLast<CR>
 noremap <silent> <leader>ts :TestSuite<CR>
 
 " disable cache for go vim-test
