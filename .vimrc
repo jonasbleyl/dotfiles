@@ -12,6 +12,7 @@ Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-endwise', {'for': 'ruby'}
 Plugin 'janko-m/vim-test'
+Plugin 'christoomey/vim-tmux-runner'
 Plugin 'mhinz/vim-startify'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'timakro/vim-searchant'
@@ -104,6 +105,11 @@ noremap <silent> <leader>t :TestFile<CR>
 noremap <silent> <leader>T :TestNearest<CR>
 noremap <silent> <Leader>l :TestLast<CR>
 noremap <silent> <leader>ts :TestSuite<CR>
+
+" vim-test + vim-tmux-runner
+let test#strategy = "vtr"
+let g:VtrOrientation = "h"
+let g:VtrPercentage = 45
 
 " disable cache for go vim-test
 let test#go#gotest#options = '-count=1'
