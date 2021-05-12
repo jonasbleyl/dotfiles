@@ -1,4 +1,5 @@
 source ~/antigen.zsh
+source ~/.zprofile
 if [[ -f ~/.proxy ]]; then source ~/.proxy; fi
 
 # plugins
@@ -32,7 +33,6 @@ export VISUAL=vim
 export EDITOR=vim
 
 # git aliases
-alias g='git'
 alias gs='git status -u'
 alias ga='git add'
 alias gaa='git add -A'
@@ -45,14 +45,12 @@ alias gl='git_pretty_log'
 alias gst='git stash --include-untracked'
 
 # ansible aliases
-alias aa="ansible --vault-password-file .vault"
-alias av="ansible-vault --vault-password-file .vault"
 alias agi="ansible-galaxy install -r requirements.yml -f"
+alias a="ansible-playbook -D --vault-password-file .vault"
 alias ap="agi; ansible-playbook -D --vault-password-file .vault"
-alias aas="aa -m setup -a 'gather_subset=network' all"
-alias avv="av view"
-alias ave="av edit"
-alias avc="av create"
+alias avv="ansible-vault view --vault-password-file .vault"
+alias ave="ansible-vault edit --vault-password-file .vault"
+alias avc="ansible-vault create --vault-password-file .vault"
 
 # docker aliases
 alias di='docker images'
