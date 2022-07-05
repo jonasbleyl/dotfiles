@@ -10,17 +10,14 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-endwise', {'for': 'ruby'}
 Plugin 'janko-m/vim-test'
-Plugin 'christoomey/vim-tmux-runner'
 Plugin 'mhinz/vim-startify'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'timakro/vim-searchant'
+Plugin 'qxxxb/vim-searchhi'
 Plugin 'fatih/vim-go'
 Plugin 'mileszs/ack.vim'
 Plugin 'JGShaw/AnsibleVaultVim'
 Plugin 'jonasbleyl/lunarflare.vim'
-Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 
 set re=1
@@ -45,8 +42,7 @@ let g:airline_theme='zenburn'
 let g:airline_section_y=''
 let g:airline_section_z="%l/%L ➤ %c"
 set termguicolors
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set t_Co=256
 
 " change cursor for normal/insert mode
 if $TERM_PROGRAM =~ "iTerm"
@@ -75,9 +71,6 @@ autocmd BufWritePost * GitGutter
 let g:NERDSpaceDelims=1
 let g:NERDTrimTrailingWhitespace=1
 
-" fix supertab/endwise incompatibility
-let g:SuperTabCrMapping = 0
-
 " vim-go :GoDiagnostics to see issues
 let g:go_rename_command = 'gopls'
 let g:go_echo_command_info = 0
@@ -90,6 +83,12 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
+" move between splits
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
+
 " ansible-vault
 let g:AnsibleVaultVimPasswordFile = '.vault'
 nmap <silent> <leader>ave :AnsibleVaultEdit<CR>
@@ -100,19 +99,21 @@ noremap <silent> <leader>i  mzgg=G`z
 " <leader>y yank to system clipboard
 vnoremap <leader>y  "*y
 
-" vim-test
+" <Leader>t to run all tests in the current file if it is a test, otherwise run the last test file
 noremap <silent> <leader>t :TestFile<CR>
-noremap <silent> <leader>T :TestNearest<CR>
-noremap <silent> <Leader>l :TestLast<CR>
-noremap <silent> <leader>ts :TestSuite<CR>
 
-" vim-test + vim-tmux-runner
-let test#strategy = "vtr"
-let g:VtrOrientation = "h"
-let g:VtrPercentage = 45
+" <Leader>t to run the tests in the scope nearest the cursor
+noremap <silent> <leader>T :TestNearest<CR>
+
+" <Leader>ts to run the tests in the scope nearest the cursor
+noremap <silent> <leader>ts :TestSuite<CR>
 
 " disable cache for go vim-test
 let test#go#gotest#options = '-count=1'
+
+" vim-searchhi
+nmap <silent> <C-C> <Plug>(searchhi-clear-all)
+vmap <silent> <C-C> <Plug>(searchhi-v-clear-all)
 
 " switch to previous buffer
 noremap <silent> <Leader><Leader> :b#<CR>
@@ -142,7 +143,7 @@ autocmd User Startified setlocal buftype=
 
 " setup vim-startify's start screen
 let g:startify_change_to_vcs_root = 1
-let g:startify_files_number = 6
+let g:startify_files_number = 10
 let g:startify_custom_header = [
       \ '   __      __            ',
       \ '   \ \    / (_)          ',
