@@ -164,6 +164,5 @@ let g:startify_list_order = [
 let g:startify_bookmarks = [
       \ { 'v': '~/.vimrc' },
       \ { 'z': '~/.zshrc' },
-      \ { 't': '~/.tmux.conf' },
       \ { 's': '~/.ssh/config' },
       \ ]
